@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GIG-Egypt Challenge Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="pattern pattern-a"></div><div class="pattern pattern-b"></div>
+  <header class="topbar">
+    <img id="brandLogo" src="assets/gig-egypt-logo.png" class="logo" alt="GIG Egypt">
+    <div class="brand-copy">
+      <h1>GIG-Egypt <span>Challenge Hub</span></h1>
+      <p>Play. Learn. Protect. Win.</p>
+    </div>
+    <div class="slogan">Invested<br>in <strong>You</strong></div>
+  </header>
+
+  <main id="app">
+    <section id="welcome" class="screen active">
+      <div class="panel welcome-panel">
+        <h2>WELCOME</h2>
+        <p>Enter your details to start</p>
+        <label>Name<input id="playerName" type="text" autocomplete="off" placeholder="Your Name"></label>
+        <label>Phone Number<input id="playerPhone" type="tel" inputmode="numeric" maxlength="11" autocomplete="off" placeholder="11-digit Phone Number"><p id="phoneError" class="field-error hidden">Please write your correct 11 numbers.</p></label>
+        <button class="shell-btn" data-action="start">CONTINUE</button>
+      </div>
+    </section>
+
+    <section id="wheelScreen" class="screen">
+      <div class="panel centered">
+        <h2>SPIN THE WHEEL</h2><p>Spin to determine your level!</p>
+        <div class="wheel-wrap">
+          <div class="pointer">▼</div>
+          <div id="wheel" class="wheel">
+            <div class="wheel-label l1">LEVEL 1</div><div class="wheel-label l2">LEVEL 2</div><div class="wheel-label l3">LEVEL 3</div>
+          </div>
+          <button id="spinBtn" class="spin-center">SPIN</button>
+        </div>
+        <p id="wheelStatus" class="status" aria-live="polite">Good luck!</p>
+      </div>
+    </section>
+
+    <section id="levelLanding" class="screen">
+      <div class="panel centered">
+        <p class="eyebrow">YOU LANDED ON</p><h2 id="landedLevel">LEVEL 1</h2>
+        <p>Let's begin your challenge!</p>
+        <button id="startLevelBtn" class="shell-btn">START</button>
+      </div>
+    </section>
+
+    <section id="level1" class="screen"><div class="panel centered"><span class="eyebrow">LEVEL 1</span><h2>Let's Jenga</h2><p class="physical-instruction">Play Jenga and return with High Score!</p><button id="physicalJengaDone" class="congrats-rectangle">Congratulations! Let's go to Level 2</button></div></section>
+
+    <section id="level2Menu" class="screen">
+      <div class="panel">
+        <div class="game-head"><div><span class="eyebrow">LEVEL 2</span><h2>Choose Your Challenge</h2></div><div class="scorebox">TOTAL<br><strong class="total-score">0</strong></div></div>
+        <div class="choice-grid">
+          <button class="challenge-card" data-game="suitcase"><span class="big-icon">🧳</span><b>Pack Your Protected Vacation Suitcase</b><small>Memory challenge</small></button>
+          <button class="challenge-card" data-game="risk"><span class="big-icon">🔎</span><b>Differentiate the Risk</b><small>Spot insurance risks</small></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="suitcase" class="screen">
+      <div class="panel game-panel">
+        <span class="eyebrow">LEVEL 2</span><h2>Pack Your Protected Vacation Suitcase</h2>
+        <div id="suitcaseContent"></div>
+      </div>
+    </section>
+
+    <section id="risk" class="screen">
+      <div class="panel game-panel">
+        <span class="eyebrow">LEVEL 2</span><h2>Differentiate the Risk</h2>
+        <p>Find the 5 differences. Tap each difference on the right-hand scene within 30 seconds.</p><div class="timer">TIME <strong id="riskTimer">30s</strong></div><div id="riskContent"></div>
+      </div>
+    </section>
+
+    <section id="level3Menu" class="screen">
+      <div class="panel">
+        <div class="game-head"><div><span class="eyebrow">LEVEL 3</span><h2>Choose Your Challenge</h2></div><div class="scorebox">TOTAL<br><strong class="total-score">0</strong></div></div>
+        <div class="difficulty">
+          <p>Choose difficulty</p>
+          <label><input type="radio" name="difficulty" value="easy"> Easy — 60 sec / 10,000 pts</label>
+          <label><input type="radio" name="difficulty" value="medium" checked> Medium — 40 sec / 20,000 pts</label>
+          <label><input type="radio" name="difficulty" value="hard"> Hard — 25 sec / 30,000 pts</label>
+        </div>
+        <div class="choice-grid">
+          <button class="challenge-card" data-game="emoji"><span class="big-icon">😎✈️❤️🏠🤔</span><b>Guess the Insurance by the Emoji</b><small>3 of 5 to win</small></button>
+          <button class="challenge-card" data-game="emergency"><span class="big-icon">⚠️</span><b>What Would You Do in an Emergency?</b><small>Scenario challenge</small></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="emoji" class="screen"><div class="panel game-panel"><div class="timer">TIME <strong id="emojiTimer">--</strong></div><span class="eyebrow">LEVEL 3</span><h2>Guess the Insurance by the Emoji</h2><div id="emojiContent"></div></div></section>
+    <section id="emergency" class="screen"><div class="panel game-panel"><div class="timer">TIME <strong id="emergencyTimer">--</strong></div><span class="eyebrow">LEVEL 3</span><h2>What Would You Do in an Emergency?</h2><div id="emergencyContent"></div></div></section>
+
+    <section id="finish" class="screen">
+      <div class="panel centered">
+        <p class="eyebrow" id="finishEyebrow">CHALLENGE COMPLETE</p><h2 id="finishTitle">Great Job!</h2>
+        <p id="finishMessage"></p><div class="final-score"><span>FINAL SCORE</span><strong id="finalScore">0</strong></div>
+        <button class="shell-btn" data-action="new-player">NEW PLAYER</button>
+        <button class="text-btn" data-action="leaderboard">VIEW LEADERBOARD</button>
+      </div>
+    </section>
+
+    <section id="leaderboard" class="screen">
+      <div class="panel">
+        <h2>🏆 LEADERBOARD</h2>
+        <div id="leaderboardList"></div>
+        <div class="admin-row"><button class="text-btn" data-action="close-leaderboard">BACK</button></div>
+      </div>
+    </section>
+
+    <section id="adminScreen" class="screen">
+      <div class="panel">
+        <h2>🔐 ADMIN — All Player Data</h2>
+        <p id="adminRecordCount" class="status"></p>
+        <div id="adminList" class="admin-list"></div>
+        <div class="admin-row">
+          <button class="shell-btn small" data-action="admin-export-csv">EXPORT CSV</button>
+          <button class="shell-btn small" data-action="admin-export-json">EXPORT JSON</button>
+          <button class="text-btn" data-action="clear-scores">CLEAR ALL SCORES</button>
+          <button class="text-btn" data-action="close-admin">BACK</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="pinModal" class="modal-overlay hidden">
+    <div class="panel modal-panel">
+      <h2>Admin Access</h2>
+      <p>Enter the admin PIN to continue.</p>
+      <input id="pinInput" type="password" inputmode="numeric" maxlength="8" placeholder="PIN" autocomplete="off">
+      <p id="pinError" class="field-error hidden">Incorrect PIN.</p>
+      <div class="admin-row">
+        <button class="shell-btn small" data-action="pin-submit">UNLOCK</button>
+        <button class="text-btn" data-action="pin-cancel">CANCEL</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <button class="footer-btn" data-action="leaderboard">🏆 LEADERBOARD</button>
+    <p>Collect points, complete challenges and <strong>win amazing prizes!</strong></p>
+    <button class="footer-btn" data-action="reset">↻ RESET GAME</button>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
